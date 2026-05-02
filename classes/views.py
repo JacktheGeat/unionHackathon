@@ -1,0 +1,29 @@
+from django.shortcuts import render
+
+from django.http import HttpResponse
+from .models import Question, Class, Building
+from django.template import loader
+from django.forms.models import model_to_dict
+
+def index(request):
+    classesList = Class.objects
+    template = loader.get_template("classes/index.html")
+    context = {"classes": classesList}
+    return HttpResponse(template.render(context, request))
+    
+def detail(request, id):
+    obj = Class.objects.get(id=id)
+    classData=model_to_dict(obj)
+    building = Building.objects.get(id=id)
+    template = loader.get_template("classes/detail.html")
+    context = {"classData": classData, "building": building}
+    return HttpResponse(template.render(context, request))
+
+
+def results(request, id):
+    response = "You're looking at the results of question %s."
+    return HttpResponse(response % id)
+
+
+def vote(request, id):
+    return HttpResponse("You're voting on question %s." % id)

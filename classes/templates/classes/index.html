@@ -1,0 +1,10 @@
+<h1>HELLO</h1>
+{% if classes %}
+    <ul>
+    {% for class in classes.all %}
+        <li><a href="/classes/{{ class.id }}/">{{ class.classname }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No poll are available.</p>
+{% endif %}
