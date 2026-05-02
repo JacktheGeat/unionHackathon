@@ -12,12 +12,22 @@
     function map_init_basic (map, options) {
         {{ details|safe }}.forEach(item => console.log(item));
         {{ details|safe }}.forEach(item => {
-            L.marker(item["location"]).addTo(map).bindPopup('Name: ' + item["name"])
+            let marker = null;
+            const popupText = "Name: " + item["name"] + "<br> Organizer: " + item["organizer"] +
+                    "<br> Description: " + item["description"];
+            if ("image_url" in item) {
+                marker = L.icon({
+                    iconUrl: item["image_url"],
+
+                    iconSize: [28, 85]
+                })
+            }
+            L.marker(item["location"], {icon:marker}).addTo(map)
+                .bindPopup(popupText)
         });
     }
     </script>
 </head>
 <body>
-    <a>{{events}}</a>
 {% leaflet_map "yourmap" callback="window.map_init_basic"%}
 </body>
