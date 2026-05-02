@@ -11,4 +11,5 @@ urlpatterns = [
     path("<int:id>/results/", views.results, name="results"),
     # ex: /classes/5/vote/
     path("<int:id>/vote/", views.vote, name="vote"),
+    path("map", views.show_all, name="map"),
 ]

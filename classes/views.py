@@ -1,3 +1,5 @@
+from multiprocessing import context
+
 from django.shortcuts import render
 
 from django.http import HttpResponse
@@ -17,6 +19,18 @@ def detail(request, id):
     building = Building.objects.get(id=id)
     template = loader.get_template("classes/detail.html")
     context = {"classData": classData, "building": building}
+    return HttpResponse(template.render(context, request))
+
+def show_all(request):
+    details = []
+    for klass in Class.objects.iterator():
+        building = klass.building
+        dd = {"location": [float(building.longitude), float(building.latitude)],
+              "name": klass.classname}
+        details.append(dd)
+
+    context = {"details": details}
+    template = loader.get_template("classes/listAll.html")
     return HttpResponse(template.render(context, request))
 
 

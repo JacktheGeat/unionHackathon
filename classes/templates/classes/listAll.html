@@ -1,0 +1,20 @@
+{% load leaflet_tags %}
+<head>
+    <title>Secure Ware</title>
+    {% leaflet_js %}
+    {% leaflet_css %}
+    <script>
+    function map_init_basic (map, options) {
+        {{ details|safe }}.forEach(item => console.log(item));
+        {{ details|safe }}.forEach(item => {
+            L.marker(item["location"]).addTo(map).bindPopup('Name: ' + item["name"])
+        });
+    }
+
+
+    </script>
+</head>
+<body>
+{% leaflet_map "yourmap" callback="window.map_init_basic"%}
+
+</body>
