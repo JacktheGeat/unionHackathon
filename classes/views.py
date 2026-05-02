@@ -25,7 +25,7 @@ def show_all(request):
     details = []
     for klass in Class.objects.iterator():
         building = klass.building
-        dd = {"location": [float(building.latitude), float(building.longitude)],
+        dd = {"location": [float(building.longitude), float(building.latitude)],
               "name": klass.classname}
         details.append(dd)
 

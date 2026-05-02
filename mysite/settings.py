@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    "main",
     "classes.apps.ClassesConfig",
     "events.apps.EventsConfig",
     "django.contrib.admin",
@@ -43,6 +44,14 @@ INSTALLED_APPS = [
 ]
 
 SECURE_REFERRER_POLICY = "strict-origin-when-cross-origin"
+
+LEAFLET_CONFIG = {
+    'DEFAULT_CENTER': (42.817285785610856, -73.929960706575),
+    'DEFAULT_ZOOM': 17,
+    'MAX_ZOOM': 20,
+    'MIN_ZOOM': 3,
+    'RESET_VIEW': True,
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

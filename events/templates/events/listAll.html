@@ -1,4 +1,9 @@
 {% load leaflet_tags %}
+{% load static %}
+
+
+<link rel="stylesheet" href="{% static 'classes/index.css' %}">
+
 <head>
     <title>Secure Ware</title>
     {% leaflet_js %}
@@ -12,6 +17,10 @@
     }
     </script>
 </head>
+
 <body>
-{% leaflet_map "yourmap" callback="window.map_init_basic"%}
+<div class="body" style="width: 100%; height: 100%">
+    {% leaflet_map "yourmap" callback="window.map_init_basic"%}
+</div>
+
 </body>
