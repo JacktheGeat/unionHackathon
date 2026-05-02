@@ -5,6 +5,9 @@ from .models import Event
 from django.template import loader
 from django.forms.models import model_to_dict
 
+def main(request):
+    return HttpResponse("test")
+
 def show_map(request):
     details = []
     for event in Event.objects.iterator():
