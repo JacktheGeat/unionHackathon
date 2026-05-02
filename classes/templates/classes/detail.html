@@ -10,14 +10,49 @@
 <br>
 <h3>Where can I find my class?</h3>
 <iframe 
+  id="class-map"
   width="500" 
   height="500" 
-  frameborder="0" 
-  scrolling="no" 
-  marginheight="0" 
-  marginwidth="0" 
-  src="https://maps.google.com/maps?q={{building.longitude}},{{building.latitude}}&zoom=500&hl=en&z=18&amp;output=embed"
- ></iframe>
+  style="border:0;"
+  loading="lazy"
+  referrerpolicy="no-referrer-when-downgrade"
+></iframe>
+
+<script>
+function updateUserLocation() {
+    const destLat = "{{ building.latitude|default:'0' }}";
+    const destLon = "{{ building.longitude|default:'0' }}";
+
+    const mapIframe = document.getElementById('class-map');
+
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                const userLat = position.coords.latitude;
+                const userLon = position.coords.longitude;
+
+                const directionsUrl =
+                    `https://www.google.com/maps?q=${userLat},${userLon}+to+${destLon},${destLat}&output=embed`;
+
+                mapIframe.src = directionsUrl;
+            },
+            (error) => {
+                console.warn("Geolocation failed:", error);
+
+                // Fallback: just show destination
+                mapIframe.src =
+                    `https://www.google.com/maps?q=${destLon},${destLat}&output=embed`;
+            }
+        );
+    } else {
+        // Fallback if geolocation not supported
+        mapIframe.src =
+            `https://www.google.com/maps?q=${destLon},${destLat}&output=embed`;
+    }
+}
+
+window.onload = updateUserLocation;
+</script>
 {% else %}
-    <p>No poll are available.</p>
+    <p>No class data is available, or invalid class.</p>
 {% endif %}
