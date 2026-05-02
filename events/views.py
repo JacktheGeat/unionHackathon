@@ -5,6 +5,9 @@ from .models import Event
 from django.template import loader
 from django.forms.models import model_to_dict
 
+def main(request):
+    return HttpResponse("test")
+
 def show_map(request):
     details = []
     for event in Event.objects.iterator():
@@ -14,5 +17,5 @@ def show_map(request):
               "description": event.description}
         details.append(dd)
     template = loader.get_template("events/listAll.html")
-    context = {"classes": details}
+    context = {"details": details}
     return HttpResponse(template.render(context, request))

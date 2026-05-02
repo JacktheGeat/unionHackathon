@@ -37,7 +37,7 @@
                     const userLon = position.coords.longitude;
 
                     const directionsUrl =
-                        `https://www.google.com/maps?q=${userLat},${userLon}+to+${destLat},${destLon}&output=embed`;
+                        `https://www.google.com/maps?q=${userLat},${userLon}+to+${destLon},${destLat}&output=embed`;
 
                     mapIframe.src = directionsUrl;
                 },
@@ -46,13 +46,13 @@
 
                     // Fallback: just show destination
                     mapIframe.src =
-                        `https://www.google.com/maps?q=${destLat},${destLon}&output=embed`;
+                        `https://www.google.com/maps?q=${destLon},${destLat}&output=embed`;
                 }
             );
         } else {
             // Fallback if geolocation not supported
             mapIframe.src =
-                `https://www.google.com/maps?q=${destLat},${destLon}&output=embed`;
+                `https://www.google.com/maps?q=${destLon},${destLat}&output=embed`;
         }
     }
 

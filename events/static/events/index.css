@@ -1,0 +1,20 @@
+body {
+    background-color: #963846;
+    height: 90dvh;
+    width: 95dvw;
+    padding: 2%;
+}
+li a:link, li a:visited {
+  color: red;
+}
+
+.main {
+    background-color: white;
+    height: 88dvh;
+    padding: 20px;
+}
+
+iframe {
+    background: url(https://media2.giphy.com/media/v1.Y2lkPTZjMDliOTUybjNxZ2N6OXN5eGNibjR5dmVjeHo4dHF6OHpzZzYyMWxjejdyeTRkNyZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/L05HgB2h6qICDs5Sms/200.gif) center center no-repeat;
+    background-color: lightgray;
+}
