@@ -1,11 +1,17 @@
-<h1>Welcome</h1>
-<h3>Classes in your schedule:</h3>
-{% if classes %}
-    <ul>
-    {% for class in classes.all %}
-        <li><a href="/classes/{{ class.id }}/">{{ class.classname }}</a><br><a>Starts: {{class.startTime}}</a></li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No poll are available.</p>
-{% endif %}
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'classes/index.css' %}">
+
+<div class="main">
+    <h1>Welcome</h1>
+    <h3>Classes in your schedule:</h3>
+    {% if classes %}
+        <ul>
+        {% for class in classes.all %}
+            <li><a href="/classes/{{ class.id }}/">{{ class.classname }}</a><br><a>Starts: {{class.startTime}}</a></li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No poll are available.</p>
+    {% endif %}
+</div>
