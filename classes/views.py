@@ -25,13 +25,13 @@ def show_all(request):
     details = []
     for klass in Class.objects.iterator():
         building = klass.building
-        dd = {"location": [float(building.longitude), float(building.latitude)],
+        dd = {"location": [float(building.latitude), float(building.longitude)],
               "name": klass.classname}
         details.append(dd)
 
     context = {"details": details}
     template = loader.get_template("classes/listAll.html")
-    return HttpResponse(template.render(context, request))
+    return render(request, 'classes/listAll.html', context)
 
 
 def results(request, id):

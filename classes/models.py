@@ -25,8 +25,8 @@ class Choice(models.Model):
 
 class Building(models.Model):
     name = models.CharField(max_length=200)
-    longitude = models.FloatField(max_length=100)
     latitude = models.FloatField(max_length=100)
+    longitude = models.FloatField(max_length=100)
     def __str__(self):
         return self.name
     

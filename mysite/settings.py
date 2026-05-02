@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "leaflet",
 ]
 
+SECURE_REFERRER_POLICY = "strict-origin-when-cross-origin"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
