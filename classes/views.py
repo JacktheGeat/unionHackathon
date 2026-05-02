@@ -32,12 +32,3 @@ def show_all(request):
     context = {"details": details}
     template = loader.get_template("classes/listAll.html")
     return render(request, 'classes/listAll.html', context)
-
-
-def results(request, id):
-    response = "You're looking at the results of question %s."
-    return HttpResponse(response % id)
-
-
-def vote(request, id):
-    return HttpResponse("You're voting on question %s." % id)

@@ -4,5 +4,5 @@ from . import views
 
 urlpatterns = [
     # ex: /events/map
-    path("map", views.show_map, name="vote"),
+    path("map", views.show_map, name="map"),
 ]
