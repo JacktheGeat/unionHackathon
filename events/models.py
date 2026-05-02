@@ -8,5 +8,6 @@ class Event(models.Model):
     longitude = models.FloatField(max_length=100)
     eventDate = models.DateTimeField("Start Date")
     endDate = models.DateTimeField("End Date")
+    event_image = models.ImageField(null=True, upload_to="event_images")
     def __str__(self):
         return self.name
